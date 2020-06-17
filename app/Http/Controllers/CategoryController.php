@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use DB;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +15,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data = Category::all();
+        $d =$data->count();
+
+        $respone=[
+            'number of data'=>$d,
+            'data'=>$data
+        ];
+        return response()->json($respone);
     }
 
     /**
@@ -34,7 +43,29 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data= new Category;
+        $data->category_name = $request->input('category_name');
+
+        $name = $data->category_name;
+
+        $test_name = Category::Where('category_name',$name);
+        
+        if($test_name->count()){
+            $respone=[
+                'data'=>'category_name is exists!!',
+                'success'=>0
+            ];
+        }
+        else{
+            $respone=[
+                'data'=>$data,
+                'success'=>1
+            ];
+            $data->save();
+        }
+        
+        
+        return response()->json($respone);
     }
 
     /**
@@ -45,7 +76,20 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=Category::Where('category_id',$id)->get();
+        if($data->count()){
+            $respone = [
+                'data'=>$data,
+                'status'=> 1
+            ];
+        }else{
+            $respone = [
+                'data'=>$data,
+                'status'=> 0
+            ];
+        }
+        
+        return response()->json($respone);
     }
 
     /**
@@ -68,7 +112,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data  = DB::table('category')->where('category_id', $id)
+        ->update($request->all());
+        $da = Category::Where('category_id',$id)->get();
+
+        if($da->count()){
+            $response["supplier"] = $da;
+            $response["success"] = 1;
+        }
+        else{
+            $response["supplier"] = $da;
+            $response["success"] = 0; 
+        }
+        
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -79,6 +137,20 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Category::Where('category_id',$id)->get();
+        if($data->count()){
+            $respone=[
+                'data'=>$data,
+                'success'=>1
+            ];
+            $delete= Category::Where('category_id',$id)->delete();
+        }
+        else{
+            $respone=[
+                'data'=>$data,
+                'success'=>0
+            ];
+        }
+        return response()->json($respone);
     }
 }

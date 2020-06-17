@@ -15,7 +15,6 @@ class CreateSaleTransactionTable extends Migration
     {
         Schema::create('sale_transaction', function (Blueprint $table) {
             $table->increments('sale_transaction_id');
-            $table->timestamp('sale_transaction_date_time');
             $table->integer('sale_transaction_total_price');
             $table->string('sale_transaction_description');
             $table->integer('staff_id');

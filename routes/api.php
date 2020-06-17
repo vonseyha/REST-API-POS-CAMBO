@@ -52,3 +52,17 @@ Route::get('staff/index', 'StaffController@index');
 Route::get('staff/search/{id}', 'StaffController@show');
 Route::put('staff/update/{id}', 'StaffController@update');
 Route::delete('staff/delete/{id}', 'StaffController@destroy');
+
+// api table sale_transaction
+Route::post('sale_transaction/register', 'SaleTransactionController@store');
+Route::get('sale_transaction/index', 'SaleTransactionController@index');
+Route::get('sale_transaction/search/{id}', 'SaleTransactionController@show');
+Route::put('sale_transaction/update/{id}', 'SaleTransactionController@update');
+Route::delete('sale_transaction/delete/{id}', 'SaleTransactionController@destroy');
+
+// api table category
+Route::post('category/register', 'CategoryController@store');
+Route::get('category/index', 'CategoryController@index');
+Route::get('category/search/{id}', 'CategoryController@show');
+Route::put('category/update/{id}', 'CategoryController@update');
+Route::delete('category/delete/{id}', 'CategoryController@destroy');
