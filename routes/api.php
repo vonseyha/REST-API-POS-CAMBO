@@ -38,3 +38,17 @@ Route::get('order/{id}', 'OrderController@orderById');
 Route::post('order', 'OrderController@createOrder');
 Route::put('order/{payment_id}', 'OrderController@updateOrder');
 Route::delete('order/{payment_id}', 'OrderController@deleteOrder');
+
+// api table supplier
+Route::post('supplier/register', 'SupplierController@store');
+Route::get('supplier/index', 'SupplierController@index');
+Route::get('supplier/search/{id}', 'SupplierController@show');
+Route::put('supplier/update/{id}', 'SupplierController@update');
+Route::delete('supplier/delete/{id}', 'SupplierController@destroy');
+
+// api table staff
+Route::post('staff/register', 'StaffController@store');
+Route::get('staff/index', 'StaffController@index');
+Route::get('staff/search/{id}', 'StaffController@show');
+Route::put('staff/update/{id}', 'StaffController@update');
+Route::delete('staff/delete/{id}', 'StaffController@destroy');
