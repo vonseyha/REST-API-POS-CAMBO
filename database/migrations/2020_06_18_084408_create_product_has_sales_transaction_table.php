@@ -14,7 +14,7 @@ class CreateProductHasSalesTransactionTable extends Migration
     public function up()
     {
         Schema::create('product_has_sales_transaction', function (Blueprint $table) {
-            $table->integer('product_product_id');
+            $table->increments('product_product_id');
             $table->integer('sale_transaction_saletransaction_id');
             $table->timestamps();
         });

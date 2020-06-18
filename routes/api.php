@@ -66,3 +66,17 @@ Route::get('category/index', 'CategoryController@index');
 Route::get('category/search/{id}', 'CategoryController@show');
 Route::put('category/update/{id}', 'CategoryController@update');
 Route::delete('category/delete/{id}', 'CategoryController@destroy');
+
+// api table payment_type
+Route::get('payment', 'PaymentTypeController@payment');
+Route::get('payment/{id}', 'PaymentTypeController@paymentById');
+Route::post('payment', 'PaymentTypeController@createPaymentType');
+Route::put('payment/{payment_id}', 'PaymentTypeController@updatePaymentType');
+Route::delete('payment/{payment_id}', 'PaymentTypeController@deletePaymentType');
+
+// api table product_has_sales_transaction
+Route::get('productsale', 'ProductHasSalesTransactionController@productHST');
+Route::get('productsale/{id}', 'ProductHasSalesTransactionController@productHSTById');
+Route::post('productsale', 'ProductHasSalesTransactionController@createProductHST');
+Route::put('productsale/{id}', 'ProductHasSalesTransactionController@updateProductHST');
+Route::delete('productsale/{id}', 'ProductHasSalesTransactionController@deleteProductHST');

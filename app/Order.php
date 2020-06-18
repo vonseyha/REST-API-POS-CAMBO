@@ -28,4 +28,9 @@ class Order extends Model
     {
         return $this->hasMany('App\Customer', 'customer_id', 'order.customer_id');
     }
+
+    public function myPayment () 
+    {
+        return $this->hasMany('App\PaymentType', 'payment_id', 'order.payment_id');
+    }
 }
